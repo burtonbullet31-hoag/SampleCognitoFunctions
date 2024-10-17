@@ -2,8 +2,6 @@ using SampleCognitoFunctions.Models;
 
 namespace SampleCognitoFunctions.Interfaces.Services;
 
-using System.Threading.Tasks;
-
 public interface IUserService
 {
     Task CreateUserAsync(string username, string password);

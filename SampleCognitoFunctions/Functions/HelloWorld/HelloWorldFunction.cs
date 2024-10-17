@@ -5,21 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SampleCognitoFunctions.Functions.HelloWorld;
 
-public class HelloWorldFunction
+public class HelloWorldFunction(ILogger<HelloWorldFunction> logger)
 {
-    private readonly ILogger<HelloWorldFunction> _logger;
-
-    public HelloWorldFunction(ILogger<HelloWorldFunction> logger)
+    [Function("HelloWorld")]
+    public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req)
     {
-        _logger = logger;
-    }
-
-    [Function("HelloWorldFunction")]
-    public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
-    {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
+        logger.LogInformation("C# HTTP trigger function processed a request.");
         return new OkObjectResult("Welcome to Azure Functions!");
         
     }
-
 }

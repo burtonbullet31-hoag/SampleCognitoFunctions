@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace SampleCognitoFunctions.Enums;
 
-public class ServiceResponseStatus
+public enum ServiceResponseStatus
 {
-    
+    Ok,
+    Error
 }
